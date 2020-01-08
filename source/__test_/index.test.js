@@ -1,8 +1,21 @@
-import sum from './../index'
+import {replace} from './../index'
 
-describe('setup jest', () => {
-  it('adds 1 + 2 to equal 3', () => {
-    expect.assertions(1)
-    expect(sum(1, 2)).toBe(3)
+describe('test replace funciton', () => {
+  it('replace with regular word', () => {
+    const str = 'This is test text to test. replace me!'
+    const textToReplace = 'test'
+    const replaceWith = ''
+    const result = replace(str, replaceWith, textToReplace)
+    const expected = 'This is  text to . replace me!'
+    expect(result).toBe(expected)
+  })
+
+  it('replace with regex', () => {
+    const str = 'This is test text to test. replace me!'
+    const textToReplace = /test/g
+    const replaceWith = ''
+    const result = replace(str, replaceWith, textToReplace)
+    const expected = 'This is  text to . replace me!'
+    expect(result).toBe(expected)
   })
 })
